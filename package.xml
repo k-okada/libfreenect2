@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <name>libfreenect2</name>
+  <version>0.0.0</version>
+  <description>Driver for Kinect for Windows v2 (K4W2) devices (release and developer preview).</description>
+
+  <maintainer email="kei.okada@gmail.com">Kei Okada</maintainer>
+
+  <license>GPL2</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>libturbojpeg</build_depend>
+  <build_depend>libjpeg</build_depend>
+  <build_depend>libtool</build_depend>
+  <build_depend>autoconf</build_depend>
+  <build_depend>libudev-dev</build_depend>
+  <build_depend>cmake</build_depend>
+  <build_depend>mesa-common-dev</build_depend>
+  <build_depend>glut</build_depend>
+  <build_depend>libxrandr</build_depend>
+  <build_depend>doxygen</build_depend>
+  <build_depend>libxi-dev</build_depend>
+  <build_depend>automake</build_depend>
+
+  <export />
+</package>
