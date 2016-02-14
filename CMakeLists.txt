@@ -7,12 +7,13 @@ catkin_package() # CATKIN_DEVEL_PREFIX
 #libglfw3_3.0.4-1_amd64.deb libglfw3-dev_3.0.4-1_amd64.deb 
 add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb
   COMMAND sh ${PROJECT_SOURCE_DIR}/depends/install_ubuntu.sh
+  COMMAND touch ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb
   DEPENDS ${PROJECT_SOURCE_DIR}/depends/install_ubuntu.sh
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/depends)
 
 add_custom_target(install_glfw
   DEPENDS ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb
-  gksudo 'dpkg -i ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb'
+  COMMAND dpkg -s libglfw3 || gksudo 'dpkg -i ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb'
   )
 
 # libfreenect
@@ -32,5 +33,6 @@ add_custom_command(OUTPUT ${CATKIN_DEVEL_PREFIX}/lib/cmake/freenect2/freenect2Co
 add_custom_target(compile_libfreenect2 ALL
   DEPENDS ${CATKIN_DEVEL_PREFIX}/lib/cmake/freenect2/freenect2Config.cmake
   )
+add_dependencies(compile_libfreenect2 install_glfw)
 
 
