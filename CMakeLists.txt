@@ -13,7 +13,7 @@ add_custom_command(OUTPUT ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.d
 
 add_custom_target(install_glfw
   DEPENDS ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb
-  COMMAND dpkg -s libglfw3 || gksudo 'dpkg -i ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb'
+  COMMAND dpkg -s libglfw3 || gksudo dpkg -i ${PROJECT_SOURCE_DIR}/depends/libglfw3_3.0.4-1_amd64.deb ${PROJECT_SOURCE_DIR}/depends/libglfw3-dev_3.0.4-1_amd64.deb
   )
 
 # libfreenect
